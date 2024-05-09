@@ -11,18 +11,15 @@ func _process(delta):
 	
 	moveToPoint(delta, SPEED)
 
-func moveToPoint(delta, speed):
+func moveToPoint(_delta, speed):
 	var targetPos = navigationAgent.get_next_path_position()
 	var direction = global_position.direction_to(targetPos)
 	faceDirection(targetPos)
 	velocity = direction * speed
 	move_and_slide()
 
-func faceDirection(direction):
-	#look_at(Vector3(direction.x, global_position.y, direction.z), Vector3.UP)
-	#rotation.y = lerp(rotation.y, direction.y, .5)
+func faceDirection(_direction):
 	rotation.y=lerp_angle(rotation.y,atan2(-velocity.x,-velocity.z),.1)
-	print(rotation.y)
 
 func _input(_event):
 	if Input.is_action_just_pressed("LeftMouse"):

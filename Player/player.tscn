@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bttx1bgr37105"]
+[gd_scene load_steps=6 format=3 uid="uid://bttx1bgr37105"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_vb83c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3bqn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ynhkk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k4c5x"]
+albedo_color = Color(0.0431373, 1, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_deihm"]
 
@@ -19,6 +22,7 @@ shape = SubResource("CapsuleShape3D_q3bqn")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03133, 0)
 mesh = SubResource("CapsuleMesh_ynhkk")
+surface_material_override/0 = SubResource("StandardMaterial3D_k4c5x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(0.34, 0, 0, 0, -1.48619e-08, 0.34, 0, -0.34, -1.48619e-08, 0, 0.374822, -0.432325)
