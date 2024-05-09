@@ -2,8 +2,8 @@ extends CharacterBody3D
 @onready var navigationAgent = $NavigationAgent3D
 @onready var camera = $"../Camera3D"
 
-const SPEED = 5
-const ROTATION_SPEED = 5.0
+const SPEED = 7
+const ROTATION_SPEED = 0.25
 
 func _process(delta):
 	if navigationAgent.is_navigation_finished():
@@ -19,7 +19,7 @@ func moveToPoint(_delta, speed):
 	move_and_slide()
 
 func faceDirection(_direction):
-	rotation.y=lerp_angle(rotation.y,atan2(-velocity.x,-velocity.z),.1)
+	rotation.y=lerp_angle(rotation.y,atan2(-velocity.x,-velocity.z), ROTATION_SPEED)
 
 func _input(_event):
 	if Input.is_action_just_pressed("LeftMouse"):

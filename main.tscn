@@ -65,9 +65,7 @@ mesh = SubResource("BoxMesh_2t24b")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_aocrd")
 
-[node name="Player" parent="." instance=ExtResource("1_18lh2")]
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.81369, 0.5813, 0, -0.5813, 0.81369, 3.29396, 9.7033, 18.0596)
 
-[editable path="Player"]
+[node name="Player" parent="." instance=ExtResource("1_18lh2")]
