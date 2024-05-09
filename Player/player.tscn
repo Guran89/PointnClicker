@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bttx1bgr37105"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_vb83c"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3bqn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ynhkk"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_deihm"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_vb83c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03133, 0)
+shape = SubResource("CapsuleShape3D_q3bqn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03133, 0)
+mesh = SubResource("CapsuleMesh_ynhkk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.34, 0, 0, 0, -1.48619e-08, 0.34, 0, -0.34, -1.48619e-08, 0, 0.374822, -0.432325)
+mesh = SubResource("CapsuleMesh_deihm")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
