@@ -1,15 +1,19 @@
 extends CharacterBody3D
 @onready var navigationAgent = $NavigationAgent3D
-@onready var camera = $"../Camera3D"
+@onready var camera = $CameraController/CameraTarget/Camera
+@onready var camera_controller = $CameraController
 
-const SPEED = 7
-const ROTATION_SPEED = 0.25
+const SPEED = 5
+const ROTATION_SPEED = 0.20
 
 func _process(delta):
+	
 	if navigationAgent.is_navigation_finished():
 		return
 	
 	moveToPoint(delta, SPEED)
+	
+	camera_controller.position = lerp(camera_controller.position, position, .8 * delta)
 
 func moveToPoint(_delta, speed):
 	var targetPos = navigationAgent.get_next_path_position()

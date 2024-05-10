@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://dokqg7j03tgjl"]
+
+[ext_resource type="PackedScene" uid="uid://bamxua2r4igwe" path="res://Player/Robot/3DGodotRobot.glb" id="1_jyhlf"]
+[ext_resource type="Script" path="res://Player/player.gd" id="2_xbtgb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1o84k"]
+
+[node name="Player" instance=ExtResource("1_jyhlf")]
+script = ExtResource("2_xbtgb")
+
+[node name="RobotArmature" parent="." index="0"]
+transform = Transform3D(-0.578472, 2.01763e-16, -5.05716e-08, 2.01763e-16, 0.578472, -2.01763e-16, 5.05716e-08, -2.01763e-16, -0.578472, 0, 0, 0)
+
+[node name="Skeleton3D" parent="RobotArmature" index="0"]
+bones/0/position = Vector3(-3.5256e-16, 0.861288, 0.0298551)
+bones/0/rotation = Quaternion(0.0149092, 1.19196e-07, 1.77731e-09, 0.999889)
+bones/1/rotation = Quaternion(0.0294489, -1.52124e-14, 7.02117e-09, 0.999566)
+bones/4/position = Vector3(-3.65722e-16, 0.151501, -0.011741)
+bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
+bones/5/rotation = Quaternion(0.00821238, -4.94278e-14, -1.95798e-09, 0.999966)
+bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
+bones/8/position = Vector3(9.97907e-08, 0.0611572, 0.418552)
+bones/9/rotation = Quaternion(-0.523067, -0.457802, -0.521926, 0.49438)
+bones/10/rotation = Quaternion(-0.356441, 0.617847, -0.433107, 0.551029)
+bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
+bones/13/rotation = Quaternion(-0.523067, 0.457802, 0.521926, 0.49438)
+bones/14/rotation = Quaternion(-0.356441, -0.617847, 0.433107, 0.551029)
+bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
+bones/17/rotation = Quaternion(0.991415, 0.0203396, -0.00748625, 0.128945)
+bones/18/rotation = Quaternion(0.249628, 0.00871771, 0.024974, 0.967981)
+bones/19/rotation = Quaternion(-0.608714, 0.00331542, -0.00479121, 0.793369)
+bones/21/rotation = Quaternion(0.991415, -0.0203396, 0.00748626, 0.128945)
+bones/22/rotation = Quaternion(0.249628, -0.00871766, -0.0249741, 0.967981)
+bones/23/rotation = Quaternion(-0.608714, -0.00331544, 0.00479126, 0.793368)
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Run"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.966878, 0)
+shape = SubResource("CapsuleShape3D_1o84k")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="3"]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+
+[node name="CameraController" type="Node3D" parent="." index="4"]
+top_level = true
+
+[node name="CameraTarget" type="Node3D" parent="CameraController" index="0"]
+transform = Transform3D(0.965926, 0.12941, -0.224144, 0, 0.866025, 0.5, 0.258819, -0.482963, 0.836516, -0.700962, 8.5, 8.75)
+
+[node name="Camera" type="Camera3D" parent="CameraController/CameraTarget" index="0"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dop5axgte78g6"]
+
+[ext_resource type="Script" path="res://Systems/interactable_dialogue.gd" id="1_ttea4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qv5f7"]
+albedo_color = Color(1, 0.0352941, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8dbsm"]
+material = SubResource("StandardMaterial3D_qv5f7")
+
+[node name="InteractableDialogue" type="Area3D"]
+script = ExtResource("1_ttea4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.481616, 0)
+mesh = SubResource("SphereMesh_8dbsm")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36605, 0)
+billboard = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Label3D"]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "TEXT"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
