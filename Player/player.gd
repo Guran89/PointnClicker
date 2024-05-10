@@ -11,7 +11,7 @@ const ROTATION_SPEED = 0.09
 func _ready():
 	animation_tree.active = true
 
-func _process(delta):
+func _physics_process(delta):
 	if navigationAgent.is_navigation_finished():
 		animation_player.play("StretchIdle")
 		return

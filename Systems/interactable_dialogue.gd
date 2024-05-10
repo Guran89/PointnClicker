@@ -2,6 +2,11 @@ extends Area3D
 @onready var timer = $Timer
 
 @export var id: String
+@export var dialogueResource: DialogueResource
+@export var dialogueTitle: String = "start"
+
+const Balloon = preload("res://addons/dialogue_manager/example_balloon/example_balloon.tscn")
+
 var can_click = false
 
 func _ready():
@@ -9,9 +14,11 @@ func _ready():
 
 func _process(_delta):
 	if can_click:
-		print("You can click now")
 		if Input.is_action_just_pressed("RightMouse"):
 			print("You clicked on: " + id)
+			var balloon: Node = Balloon.instantiate()
+			get_tree().current_scene.add_child(balloon)
+			balloon.start(dialogueResource, dialogueTitle)
 
 func _on_body_entered(_body):
 	$AnimationPlayer.play("appear")
