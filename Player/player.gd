@@ -2,8 +2,8 @@ extends CharacterBody3D
 @onready var navigationAgent = $NavigationAgent3D
 @onready var animation_tree = $AnimationTree
 @onready var animation_player = $AnimationPlayer
-@onready var cam_gimbal = $CamGimbal
-@onready var camera = $"../Camera"
+
+@onready var camera: Camera3D = $"../CamGimbal/Camera"
 
 
 const SPEED = 5
