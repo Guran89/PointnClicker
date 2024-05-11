@@ -5,7 +5,7 @@ Node: With two choices.
 - This is choice one.
 	Node: Good choice!
 - This is choice two.
-	Node. I don't like it.
+	Node: I don't like it.
 Node: The end.
 
 => END

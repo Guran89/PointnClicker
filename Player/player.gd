@@ -1,9 +1,10 @@
 extends CharacterBody3D
 @onready var navigationAgent = $NavigationAgent3D
-@onready var camera_controller = $CameraController
-@onready var camera = $CameraController/CameraTarget/Camera
 @onready var animation_tree = $AnimationTree
 @onready var animation_player = $AnimationPlayer
+@onready var cam_gimbal = $CamGimbal
+@onready var camera = $"../Camera"
+
 
 const SPEED = 5
 const ROTATION_SPEED = 0.09
@@ -17,7 +18,7 @@ func _physics_process(delta):
 		return
 	
 	moveToPoint(delta, SPEED)
-	camera_controller.position = lerp(camera_controller.position, position, .8)
+	#cam_gimbal.position = lerp(cam_gimbal.position, camera.position, .8)
 
 func moveToPoint(_delta, speed):
 	animation_player.play("Walking1")
@@ -40,10 +41,9 @@ func shoot_ray():
 	ray_query.from = from
 	ray_query.to = to
 	var raycast_results = space.intersect_ray(ray_query)
-	#print(raycast_results)
 	navigationAgent.target_position = raycast_results.position
 
-func _input(_event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("LeftMouse"):
 		shoot_ray()
 	
