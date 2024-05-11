@@ -6,11 +6,12 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $"../CamGimbal/Camera"
 
 
-const SPEED = 5
+const SPEED = 2
 const ROTATION_SPEED = 0.09
 
 func _ready():
 	animation_tree.active = true
+	pass
 
 func _physics_process(delta):
 	if navigationAgent.is_navigation_finished():

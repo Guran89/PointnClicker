@@ -2,7 +2,7 @@ extends Node3D
 @onready var player: CharacterBody3D = $"../PlayerAmy"
 @onready var camera: Camera3D = $Camera
 
-const MIN_ZOOM = 300.0  # Adjust this value based on desired minimum distance
+const MIN_ZOOM = 100.0  # Adjust this value based on desired minimum distance
 const MAX_ZOOM = 800.0  # Adjust this value based on desired maximum distance
 
 func _process(delta):
