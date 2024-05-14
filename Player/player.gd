@@ -1,3 +1,4 @@
+
 extends CharacterBody3D
 @onready var navigationAgent = $NavigationAgent3D
 @onready var animation_tree = $AnimationTree
@@ -18,7 +19,8 @@ func _physics_process(delta):
 		animation_player.play("StretchIdle")
 		return
 	
-	moveToPoint(delta, SPEED)
+	if $NavigationAgent3D.is_target_reachable():
+		moveToPoint(delta, SPEED)
 	#cam_gimbal.position = lerp(cam_gimbal.position, camera.position, .8)
 
 func moveToPoint(_delta, speed):
