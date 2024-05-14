@@ -44,6 +44,8 @@ shadow_mesh = SubResource("ArrayMesh_71t07")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cskg"]
 albedo_texture = ExtResource("1_npvqf")
+emission = Color(0.427451, 0.415686, 0.478431, 1)
+backlight = Color(1, 1, 1, 1)
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3y7ao"]

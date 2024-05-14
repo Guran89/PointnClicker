@@ -1,9 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqph40p6gljii"]
+[gd_scene load_steps=9 format=3 uid="uid://cqph40p6gljii"]
 
 [ext_resource type="Script" path="res://Systems/Interactables/interactable.gd" id="1_0mgpg"]
-[ext_resource type="Texture2D" uid="uid://yh036fwyfa3n" path="res://Assets/interaction_symbol_circle.png" id="2_podfh"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yohwq"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_2mc2k"]
+radius = 0.158632
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qaqts"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_sxeqd"]
+material = SubResource("StandardMaterial3D_qaqts")
+inner_radius = 0.066
+outer_radius = 0.144
 
 [sub_resource type="Animation" id="Animation_tqfuk"]
 length = 0.001
@@ -50,16 +57,16 @@ _data = {
 [node name="Interactable" type="Area3D"]
 script = ExtResource("1_0mgpg")
 
-[node name="InteractIcon" type="Sprite3D" parent="."]
-billboard = 1
-texture = ExtResource("2_podfh")
-
-[node name="ClickArea" type="Area3D" parent="InteractIcon"]
+[node name="ClickArea" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractIcon/ClickArea"]
-shape = SubResource("BoxShape3D_yohwq")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClickArea"]
+shape = SubResource("SphereShape3D_2mc2k")
+
+[node name="InteractIcon" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("TorusMesh_sxeqd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -72,6 +79,6 @@ one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="mouse_entered" from="InteractIcon/ClickArea" to="." method="_on_click_area_mouse_entered"]
-[connection signal="mouse_exited" from="InteractIcon/ClickArea" to="." method="_on_click_area_mouse_exited"]
+[connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

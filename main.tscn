@@ -37,8 +37,8 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aocrd"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5k7wc"]
-size = Vector3(1, 1, 2.30188)
+[sub_resource type="BoxShape3D" id="BoxShape3D_raw3m"]
+size = Vector3(1, 1, 1.66113)
 
 [node name="Main" type="Node3D"]
 
@@ -370,6 +370,7 @@ end_position = Vector3(0.103979, -0.0817254, 0.071301)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(6.647, 0, 0, 0, 1, 0, 0, 0, 10.101, -0.477185, -0.5, 1)
+visible = false
 mesh = SubResource("BoxMesh_2t24b")
 surface_material_override/0 = SubResource("StandardMaterial3D_8c1kk")
 
@@ -380,6 +381,7 @@ shape = SubResource("BoxShape3D_aocrd")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(3.48108, 0, 0, 0, 1, 0, 0, 0, 10.101, -6.04418, -0.5, 1)
+visible = false
 mesh = SubResource("BoxMesh_2t24b")
 surface_material_override/0 = SubResource("StandardMaterial3D_8c1kk")
 
@@ -398,12 +400,22 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.961
 script = ExtResource("8_v24ak")
 
 [node name="Interactable" parent="NavigationRegion3D/Doors/Door" instance=ExtResource("9_oevrt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.409169, 1.38521, 0.249794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.472709, 1.30001, -0.0882518)
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Doors/Door/Interactable"]
-shape = SubResource("BoxShape3D_5k7wc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.762278, 0.330566)
+shape = SubResource("BoxShape3D_raw3m")
+
+[node name="Interactable2" parent="NavigationRegion3D/Doors/Door" instance=ExtResource("9_oevrt")]
+transform = Transform3D(4.96547e-08, 0, 1, 0, 1, 0, -1, 0, 2.23412e-08, 0.0549764, 1.30001, -0.596557)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Doors/Door/Interactable2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.762278, 0.330566)
+shape = SubResource("BoxShape3D_raw3m")
 
 [node name="Walls" type="Node3D" parent="NavigationRegion3D"]
 
@@ -486,5 +498,6 @@ one_shot = true
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 1.04088, 0.1, -0.0436023)
 
 [connection signal="door_opened" from="NavigationRegion3D/Doors/Door" to="NavigationRegion3D" method="_on_door_door_opened"]
-[connection signal="interacted" from="NavigationRegion3D/Doors/Door/Interactable" to="NavigationRegion3D/Doors/Door" method="_on_interactable_interacted"]
 [connection signal="timeout" from="NavigationRegion3D/Timer" to="NavigationRegion3D" method="_on_timer_timeout"]
+
+[editable path="NavigationRegion3D/Doors/Door"]
