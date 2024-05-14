@@ -1,13 +1,16 @@
 extends NavigationRegion3D
 @onready var timer = $Timer
-@onready var door_stopper = $DoorStopper
+@onready var navigation_link = $NavigationLink
+
+func _ready():
+	navigation_link.enabled = false
+
 
 func _on_door_door_opened():
-	door_stopper.queue_free()
+	navigation_link.enabled = true
 	timer.start()
-
 
 
 func _on_timer_timeout():
 	bake_navigation_mesh()
-	print("Done!")
+	print("NavLink activated.")
